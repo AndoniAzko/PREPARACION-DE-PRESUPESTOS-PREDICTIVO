@@ -20,7 +20,7 @@ scaler = StandardScaler()
 lr = RandomForestRegressor()
 
 #df_cilindros_ent = pd.read_csv(r'C:\Users\Andoni\Desktop\MASTER DATA SCIENCE\TFM\DATA\DFCILINDROS_DESARROLLO_DEFINITIVO.csv')
-loaded_model = load(open('pipe8.pkl', 'rb'))
+loaded_model = load(open('pipe.pkl', 'rb'))
 contador_amarre = 0
 contador_extra = 0
 key_amarres = 'AMARRE {}'.format(contador_amarre)
