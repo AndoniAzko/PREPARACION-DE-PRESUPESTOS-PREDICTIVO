@@ -15,8 +15,8 @@ Hay que descargar en un zip todo el contenido del repositorio, el cual incluye l
 Para preparar el entorno solo hay que crear un entorno virtual de la siguiente manera:
 
 - Instalar "pip" si no lo tenemos ya instalado: https://pip.pypa.io/en/latest/installation/
-- Instalar la librería de entornos virtuales con el comando "pip install virtualenv".
-- Crear un entorno virtual en la ruta que queramos con el comando "virtualenv .../nombrevenv"
+- Instalar la librería de entornos virtuales con el comando "py -m pip install --user virtualenv".
+- Crear un entorno virtual en la ruta que queramos con el comando "py -m venv nombrevenv"
 
 Mas información de como crear un entorno virtual en el siguiente enlace: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
 
