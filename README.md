@@ -1,7 +1,7 @@
 # PREPARACION-DE-PRESUPESTOS-PREDICTIVO
 Este trabajo esta orientado al TFM de KSchool, con una finalidad de conseguir aplicarlo realmente en una empresa industrial. El objetivo ha sido crear un modelo predictivo para el cálculo de cilindros neumáticos a medida.
 
-COMENZANDO
+## COMENZANDO
 
 Hay que descargar en un zip todo el contenido del repositorio, el cual incluye los siguientes ficheros los cuales se deberían ejecutar en este orden:
 - CALCULO PREDICTIVO DE CILINDROS ESPECIALES.docx: una memoria explicativa del proyecto, aquí se explica de forma sencilla lo que se ha hecho en el proyecto sin incluir ningún código. Leyendo este documento primero se entrenderá mejor lo que se hace en los siguientes.
@@ -10,7 +10,7 @@ Hay que descargar en un zip todo el contenido del repositorio, el cual incluye l
 - FRONTEND.py: incluye el codigo del frontend de Streamlit
 - finalized_model.sav : es el modelo que hemos generado.
 
-PRE REQUISITOS
+## PRE REQUISITOS
 
 Para preparar el entorno solo hay que crear un entorno virtual de la siguiente manera:
 
@@ -26,7 +26,7 @@ Una vez que tengamos creado el entorno virtual vamos a instalar las librerías n
     
 Con esto ya estaremos preparados para trabajar.
 
-DESCARGA DEL REPOSITORIO Y DE LOS DATOS
+## DESCARGA DEL REPOSITORIO Y DE LOS DATOS
 
 Hay que descargar el contenido del repositorio y guardar el contenido en una misma carpeta. 
 
@@ -34,7 +34,7 @@ Para descargar los datos se han subido a drive, se requiere un permiso para acce
 
 Para descargar los datos se enviará un correo electronico a "aazkonobieta31@gmail.com" indicando el proposito de uso de los datos. Si este proposito se considera correcto se facilitará al correo remitente un link con el enlace de descarga.
 
-FRONTEND PARA EL USUARIO
+## FRONTEND PARA EL USUARIO
 
 Se ha creado una interfaz del usuario para que cualquier persona pueda utilizar el programa creado. Para esto se ha utilizado "Streamlit". Para utilizar el frontend hay que ejecutar en la linea de comandos lo siguiente:
 
