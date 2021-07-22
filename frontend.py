@@ -19,21 +19,18 @@ from pickle import load
 scaler = StandardScaler()
 lr = RandomForestRegressor()
 
-df_cilindros_ent = pd.read_csv(r'C:\Users\Andoni\Desktop\MASTER DATA SCIENCE\TFM\DATA\DFCILINDROS_ENTRADA.csv')
-loaded_model = load(open('pipe.pkl', 'rb'))
+#df_cilindros_ent = pd.read_csv(r'C:\Users\Andoni\Desktop\MASTER DATA SCIENCE\TFM\DATA\DFCILINDROS_DESARROLLO_DEFINITIVO.csv')
+loaded_model = load(open('pipe8.pkl', 'rb'))
 contador_amarre = 0
 contador_extra = 0
 key_amarres = 'AMARRE {}'.format(contador_amarre)
 materiales = ['NO','ACERO', 'ALUMINIO', 'CROMADO', 'BRONCE','F-2111','INOX','MP','METACRILATO','COMPRADO']
 amarres = ['FUELLE','DETECTOR','ESCUADRA','BRIDA','ARTICULACION MACHO','ARTICULACION HEMBRA','SOPORTE','SOPORTE ARTICULACION','ZUNCHO','ARTICULACION SOPORTE ROTULA','SOPORTE CON ROTULA','ARTICULACION TRASERA CON ROTULA','ROTULA','HORQUILLA','BULON','CONTRATUERCA','BLOQUEO','GUIADO','CREMALLERA','SOPORTE CENTRAL','PIÑON']
-prueba = {'MP CAMISA':['NO'],'MP VASTAGO':['NO'],'MP VARILLAS':['NO'],'MP CABEZA PISTON':['ACERO'],'MP TAPA GUIA':['NO'],'MP TAPA TRASERA':['NO'],'DIAMETRO':[0],'CARRERA':[0],'KIT':[0],'ALTA TEMPERATURA':[0],'AMARRE 0':['NO'],'AMARRE 1':['NO'],'AMARRE 2':['NO'],'AMARRE 3':['NO'],'AMARRE 4':['NO'],'AMARRE 5':['NO'],'AMARRE 6':['NO'],'AMARRE 7':['NO'],'AMARRE 8':['NO'],'AMARRE 9':['NO'],'AMARRE 10':['NO'],'EXTRA 1':['NO'],'EXTRA 2':['NO'],'EXTRA 3':['NO'],'EXTRA 4':['NO'],'EXTRA 5':['NO'],'EXTRA 6':['NO'],'EXTRA 7':['NO'],'UNIDADES':[1]}
+prueba = {'MP CAMISA':['NO'],'MP VASTAGO':['NO'],'MP VARILLAS':['NO'],'MP CABEZA PISTON':['ACERO'],'MP TAPA GUIA':['NO'],'MP TAPA TRASERA':['NO'],'DIAMETRO':[0],'CARRERA':[0],'KIT':[0],'ALTA TEMPERATURA':[0],'AMORTIGUACION':[0],'AMARRE 0':['NO'],'AMARRE 1':['NO'],'AMARRE 2':['NO'],'AMARRE 3':['NO'],'AMARRE 4':['NO'],'AMARRE 5':['NO'],'AMARRE 6':['NO'],'AMARRE 7':['NO'],'AMARRE 8':['NO'],'AMARRE 9':['NO'],'AMARRE 10':['NO'],'EXTRA 1':['NO'],'EXTRA 2':['NO'],'EXTRA 3':['NO'],'EXTRA 4':['NO'],'EXTRA 5':['NO'],'EXTRA 6':['NO'],'EXTRA 7':['NO'],'UNIDADES':[1]}
 
 st.title('Calculadora de presupuestos de cilindros especiales')
 
-st.header('Inserta la referencia del cilindro:')
 
-#referencia = st.text_input("REFERENCIA")
-#prueba['ARTICULO'] = referencia
 
 st.header('Inserta el diametro del cilindro:')
 
@@ -52,12 +49,19 @@ prueba['UNIDADES'] = unidades
 
 st.header('Elige los materiales de los siguientes elementos:')
 
+st.subheader('Lleva amortiguación ?')
+
+AMORTIGUACION = st.checkbox('AMORTIGUACION')
+
+if AMORTIGUACION:
+    prueba['AMORTIGUACION'] = 1
+
 st.subheader('Es de Alta temperatura?')
 
 ALTA_TEMPERATURA = st.checkbox('ALTA TEMPERATURA')
 
 if ALTA_TEMPERATURA:
-    prueba['KIT'] = 1
+    prueba['ALTA_TEMPERATURA'] = 1
 
 st.subheader('Lleva KIT?')
 
@@ -296,67 +300,6 @@ TAPA_GUIA = st.checkbox('TAPA GUIA')
 if TAPA_GUIA:
     prueba['EXTRA {}'.format(contador_amarre)] = 'TAPA GUIA'
     contador_extra = contador_extra + 1
-
-
-#def nuevo_input(variables):
-    
-    #añado la linea al dataframe original para poder hacer encoding con las nuevas variables categoricas
-       
-    #df = df_cilindros_ent.append(variables, ignore_index=True)
-
-    #array = np.array(list(variables))
-    
-    #defino los tipos de las variables
-    #df['AÑO'] = pd.to_numeric(df['AÑO'], downcast='integer')
-    #df['UNIDADES'] = pd.to_numeric(df['UNIDADES'], downcast='integer')
-    #df['DIAMETRO'] = pd.to_numeric(df['DIAMETRO'], downcast='integer')
-    #df['CARRERA'] = pd.to_numeric(df['CARRERA'], downcast='integer')
-    #df['KIT'] = df['KIT'].astype("category")
-    #df['MP CAMISA'] = df['MP CAMISA'].astype("category")
-    #df['MP VASTAGO'] = df['MP VASTAGO'].astype("category")
-    #df['MP VARILLAS'] = df['MP VARILLAS'].astype("category")
-    #df['MP CABEZA PISTON'] = df['MP CABEZA PISTON'].astype("category")
-    #df['MP TAPA GUIA'] = df['MP TAPA GUIA'].astype("category")
-    #df['MP TAPA TRASERA'] = df['MP TAPA TRASERA'].astype("category")
-    ####df['MP CABEZA PISTON'] = df['MP CABEZA PISTON'].astype("category")
-    # df['AMARRE 0'] = df['AMARRE 0'].astype("category")
-    # df['AMARRE 1'] = df['AMARRE 1'].astype('category')
-    # df['AMARRE 2'] = df['AMARRE 2'].astype('category')
-    # df['AMARRE 3'] = df['AMARRE 3'].astype('category')
-    # df['AMARRE 4'] = df['AMARRE 4'].astype('category')
-    # df['AMARRE 5'] = df['AMARRE 5'].astype('category')
-    # df['AMARRE 6'] = df['AMARRE 6'].astype('category')
-    # df['AMARRE 7'] = df['AMARRE 7'].astype('category')
-    # df['AMARRE 8'] = df['AMARRE 8'].astype('category')
-    # df['AMARRE 9'] = df['AMARRE 9'].astype('category')
-    # df['AMARRE 10'] = df['AMARRE 10'].astype('category')
-    # df['EXTRA 1'] = df['EXTRA 1'].astype('category')
-    # df['EXTRA 2'] = df['EXTRA 2'].astype('category')
-    # df['EXTRA 3'] = df['EXTRA 3'].astype('category')
-    # df['EXTRA 4'] = df['EXTRA 4'].astype('category')
-    # df['EXTRA 5'] = df['EXTRA 5'].astype('category')
-    # df['EXTRA 6'] = df['EXTRA 6'].astype('category')
-    # df['EXTRA 7'] = df['EXTRA 7'].astype('category')
-    # df['UNIDADES'] = pd.to_numeric(df['UNIDADES'], downcast='integer')
-    
-    #guardo las columnas que quiero hacer encoding segun su tipo
-    # obj_columns=list(df.select_dtypes(include =['category']).columns)
-    # df_cilindros_encoded = pd.get_dummies(data=df, columns = obj_columns)
-    
-    
-    # #quito las columnas que no necesito
-    # df_cilindros_encoded=df_cilindros_encoded.drop(["SEQ_ARTICULO",'REF_ALTERNATIVA','NOMBRE','NOMBRE_ABR','FEC_ALTA','OBSER','DIM CAMISA','DIM VASTAGO','DIM VARILLAS','DIM CABEZA PISTON','DIM TAPA GUIA','DIM TAPA TRASERA','PRECIO1','FEC_MOV','AÑO'],axis=1)    
-    # #selecciono solo la linea que quiero predecir
-    # df_cilindros_encoded = df_cilindros_encoded[df_cilindros_encoded['ARTICULO']== referencia]
-    # #quito la columna articulo para predecir
-    # df_cilindros_encoded = df_cilindros_encoded.loc[:, df_cilindros_encoded.columns != 'ARTICULO']
-    # df_cilindros_encoded = df_cilindros_encoded.to_numpy()
-    # st.text(type(df_cilindros_encoded))
-
-    # #hago la predicción y lo printeo
-
-    
-    # return precio
 
 
 df_prueba = pd.DataFrame.from_dict(prueba)
